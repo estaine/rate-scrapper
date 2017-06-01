@@ -1,27 +1,29 @@
+import com.google.gson.annotations.SerializedName;
+
 /**
  * Created by estaine on 31.05.2017.
  */
 public class BankRate {
 
-    String Date;
-    Double Value;
+    @SerializedName("Date")
+    private String date;
 
-    public BankRate() {
-    }
+    @SerializedName("Value")
+    private Double value;
 
     public String getDate() {
-        return Date;
+        return date;
     }
 
     public void setDate(String date) {
-        Date = date;
+        this.date = date;
     }
 
     public Double getValue() {
-        return Value;
+        return value;
     }
 
     public void setValue(Double value) {
-        Value = value;
+        this.value = value;
     }
 }

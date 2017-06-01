@@ -25,7 +25,7 @@ public class Main {
         String websiteURL = "http://www.nbrb.by/statistics/MonetaryPolicyInstruments/InterestRates";
 
         List<BankRate> bankRates = getBankRatesFromAPI(apiURL);
-        bankRates.stream().forEach(bankRate -> System.out.println(bankRate.Date + ": " + bankRate.Value));
+        printBankRates(bankRates);
 
         String overnightRate = getOvernightRateFromHTML(websiteURL);
         System.out.println("Overnight rate: " + overnightRate);
@@ -62,5 +62,11 @@ public class Main {
         Element element = doc.select("#BodyHolder_tblMain > tbody > tr").get(2).select("td").get(2);
 
         return element.html();
+    }
+
+    private static void printBankRates(List<BankRate> bankRates) {
+        for(BankRate bankRate : bankRates) {
+            System.out.println(bankRate.getDate() + ": " + bankRate.getValue());
+        }
     }
 }
